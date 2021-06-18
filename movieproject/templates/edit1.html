@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie App</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="{% static 'css/style2.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" class="decor">
+    {% csrf_token %}
+      <div class="form-left-decoration"></div>
+      <div class="form-right-decoration"></div>
+      <div class="circle"></div>
+      <div class="form-inner">
+        <h1>Edit Movie Details</h1>
+        <input type="text" placeholder="Name" name="name">
+        <textarea placeholder="Movie Description..." rows="5" name="desc"></textarea>
+          <input type="text" placeholder="Movie Year" name="year">
+           <input type="file" name="img">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+</body>
+</html>

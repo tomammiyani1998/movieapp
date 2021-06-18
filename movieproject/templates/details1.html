@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie App</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css"/>
+    <script>
+        function myFunction() {
+        var r = confirm("Are You Sure You Want to Delete!");
+        if (r == true) {
+        return true
+        }
+        else {
+        return false
+        }
+       }
+    </script>
+</head>
+<body>
+<div id="container" style= "background-image: url('{{movie.img.url}}'); background-repeat: no-repeat; background-position:450px; background-size: 280px 350px">
+  <div id="header">
+    <h1><span>{{movie.name}}</span> ({{movie.year}})</h1>
+  </div>
+  <div id="main">
+    <div class="divider"></div>
+    <h2>About Movie</h2>
+    <p style="color:white">{{movie.desc}}</p>
+	 <a href="{% url 'movieapp:update' movie.id %}"><button class="button button1">Update</button></a>
+      <form method="post" action="{% url 'movieapp:delete' movie.id %}" onsubmit="return myFunction(this)">
+          {% csrf_token %}
+          <button class="button button2" type="submit">Delete</button>
+      </form>
+	<div class="divider"></div>
+  </div>
+  <div id="footer">
+    <p style="color:white">Copyright &copy; 2020 <a href="#">Tomz1998</a> - All Rights Reserved</p>
+  </div>
+</div>
+</body>
+</html>

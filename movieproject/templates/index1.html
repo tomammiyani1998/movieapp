@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+{% block body %}
+<div id="main">
+    <div id="content">
+      <div class="box">
+        <div class="head">
+          <h2>LATEST MOVIES</h2>
+          <p class="text-right"><a href="#">See all</a></p>
+        </div>
+        {% for i in movie_list %}
+        <div class="movie">
+          <div class="movie-image"><a href="{% url 'movieapp:details' i.id %}"><img src="{{i.img.url}}" alt="" /></a> </div>
+          <div class="rating">
+            <p>RATING</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+            <span class="comments">15</span> </div>
+        </div>
+        {% endfor %}
+        <div class="cl">&nbsp;</div>
+      </div>
+    </div>
+  <div id="news">
+    <div class="head">
+        <h3>NEWS</h3>
+        <p class="text-right"><a href="#">See all</a></p>
+    </div>
+    {% for i in movie_list %}
+      <div class="content">
+        <h4>{{i.name}} ({{i.year}})</h4>
+        <p>{{i.desc}}</p>
+        <a href="{% url 'movieapp:details' i.id %}">Read more</a> </div>
+    {% endfor %}
+  </div>
+  <div class="cl">&nbsp;</div>
+</div>
+{% endblock %}
